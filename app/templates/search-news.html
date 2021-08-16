@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block search %}
+
+<!-- Styles block -->
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/search.css')}}">
+{% endblock %}
+
+
+<section id='greeting'>
+    <div class='container'>
+        <h1>NEWS SOURCES</h1>
+        <br>
+        <p>Click one of the buttons to view the news source</p>
+    </div>
+</section>
+<hr>
+<div class="buttons">
+    <a href="/BR-NEWS"><button type="button" class="btn btn-danger">BLEACHER-REPORT</button></a>
+    <a href="/BBC-NEWS"><button type="button" class="btn btn-warning">BBC-NEWS</button></a>
+    <a href="/ABC-NEWS"><button type="button" class="btn btn-success">ABC-NEWS</button></a>
+    <a href="/FOX-NEWS"><button type="button" class="btn btn-primary">FOX-NEWS</button></a>
+    <a href="/CNN-NEWS"><button type="button" class="btn btn-primary">CNN-NEWS</button></a>
+</div>
+
+
+<!-- general news -->
+<div class='row'>
+    <div class="col">
+        <h1>Latest News</h1>
+        {{ macro.newsOfTheDay(general) }}
+    </div>
+
+    <div class="row">
+        {{ macro.newsOfTheDay(news_source) }}
+    </div>
+
+
+</div>
+</div>
+{% endblock %}

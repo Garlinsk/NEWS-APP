@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/category.css')}}">
+{% endblock %}
+
+{% block category %}
+<div class="container-fluid" id="cate-gory">
+
+ 
+  <div class='row'>
+    <!-- <div class='col'> -->
+    {{ macro.categoryList(cat_results) }}
+  </div>
+
+  </div>
+  {% endblock %}
