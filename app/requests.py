@@ -85,6 +85,8 @@ def process_articles(article_list):
 
     return article_results
 
+    
+
 
 def get_sources(name):
     get_articles_details_url = article_url.format(api_key)
