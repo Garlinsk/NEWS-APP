@@ -37,4 +37,4 @@ Any question or contributions,kindly email me @ [franklinwanami@gmail.com]
 ### License
 
 * MIT License:
-* Copyright (c) 2021 [Franklin-Kuloba] 
+* Copyright (c) 2021 Franklin-Kuloba 
