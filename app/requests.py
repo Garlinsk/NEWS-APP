@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from .models import Sources
+from .models import Sources,Articles
 
 api_key = None
 base_url = None
@@ -55,7 +55,7 @@ Fetching Articles
 '''
 
 
-def get_articles(name):
+def get_articles():
     get_articles_url = "https://newsapi.org/v2/everything?q=name&from=2021-08-12&sortBy=popularity&apiKey=360b4d3017ff40d6ac61fd173e189625"
     with urllib.request.urlopen(get_articles_url) as url:
         article_data = url.read()
@@ -72,15 +72,15 @@ def get_articles(name):
 def process_articles(article_list):
     article_results = []
     for article in article_list:
-        author =author.get("author")
+        author =article.get("author")
         title = article.get("title")
         description = article.get("description")
         urlToImage = article.get("urlToImage")
         url = article.get("url")
         publishedAt = article.get("publishedAt")
 
-        article_object = Sources(
-            title, description, urlToImage, url, publishedAt)
+        article_object = Articles(
+            title,author, description, urlToImage, url, publishedAt)
         article_results.append(article_object)
 
     return article_results

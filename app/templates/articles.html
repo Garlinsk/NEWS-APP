@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+
+{% block content %}
+<ul>
+  
+    {% for article in articles  %}
+       <li>
+           {{article.title}}
+           <hr>
+           {{article.author}}
+           <hr>
+           {{article.description}}
+           <hr>
+           {{article.url}}
+           <hr>
+           {{article.urlToImage}}
+           <hr>
+           {{article.publishedAt}}
+       </li>
+       {% endfor %}
+     </ul>
+{% endblock %}
+
