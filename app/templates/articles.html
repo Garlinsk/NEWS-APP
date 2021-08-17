@@ -3,7 +3,32 @@
 
 
 {% block content %}
-<ul>
+<div class="container">
+    <div class="row">
+        {% for article in articles  %}
+        <div class="col-md-6">
+            <div class="card" id="card1">
+                <img src=" {{article.url}}" alt="">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h6>{{article.author}}</h6>
+                    </div>
+                    <div class="card-text">
+                        <p>{{article.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="  {{article.urlToImage}}" target="_blank" >
+                            <button class="btn btn-success">view article</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+<!-- <ul>
   
     {% for article in articles  %}
        <li>
@@ -20,6 +45,6 @@
            {{article.publishedAt}}
        </li>
        {% endfor %}
-     </ul>
+     </ul> -->
 {% endblock %}
 

@@ -1,0 +1,20 @@
+body{
+    background-color: brown;
+}
+#card1{
+    margin-top: 30px;
+    background-color:#48C9B0;
+}
+
+.card-title{
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+.card-text{
+    font-size: 17px;
+ 
+
+}

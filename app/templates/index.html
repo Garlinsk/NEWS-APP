@@ -25,17 +25,10 @@
     </div>
    </div>
 
-    <div class="row g-4">
+   <div class="row g-4">
     <!-- <div class="col-md-3"> -->
-    <!-- {{ macro.newsOfTheDay(sources_news) }} -->
-    <ul>
-  
-   {% for sources in sources  %}
-      <li>
-          {{sources.name}}
-      </li>
-      {% endfor %}
-    </ul>
+    {{ macro.newsOfTheDay(sources_news) }}
+   
     <!-- </div> -->
     </div>
 
