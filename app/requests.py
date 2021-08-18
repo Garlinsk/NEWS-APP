@@ -61,12 +61,12 @@ def get_articles():
         article_data = url.read()
         article_response = json.loads(article_data)
 
-        article_object = None
+        article_results = None
 
         if article_response['articles']:
-            at_result_list = article_response["articles"]
-            at_results = process_articles(at_result_list)
-    return at_results
+            article_result_list = article_response["articles"]
+            article_results = process_articles(article_result_list)
+    return article_results
 
 
 def process_articles(article_list):
@@ -88,21 +88,48 @@ def process_articles(article_list):
     
 
 
-def get_sources(name):
-    get_articles_details_url = article_url.format(api_key)
+def get_sources():
+    get_sources_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=360b4d3017ff40d6ac61fd173e189625'
+    with urllib.request.urlopen(get_sources_url) as url:
+        source_data = url.read()
+        source_response = json.loads(source_data)
 
-    with urllib.request.urlopen(get_articles_details_url) as url:
-        news_details_data = url.read()
-        news_details_response = json.loads(news_details_data)
+        source_results = None
 
-        news_object = None
-        if news_details_response:
-            title = news_details_response.get("title")
-            description = news_details_response.get("description")
-            urlToImage = news_details_response.get("urlToImage")
-            url = news_details_response.get("url")
-            publishedAt = news_details_response.get("publishedAt")
+        if source_response['sources']:
+            source_result_list = source_response["sources"]
+            source_results = process_sources(source_result_list)
+    return source_results
 
-            news_object = Sources(
-                title, description, url, urlToImage, publishedAt)
-    return news_object
+
+def process_sources(source_list):
+   source_results = []
+   for source in source_list:
+        id =source.get("id")
+        name= source.get("name")
+        description = source.get("description")
+        url = source.get("url")
+        category = source.get("category")
+
+        source_object = Sources(
+            id,name, description, url, category)
+        source_results.append(source_object)
+
+   return source_results
+
+
+    # with urllib.request.urlopen(get_sources_url) as url:
+    #     news_source_data = url.read()
+    #     news_source_response = json.loads(news_source_data)
+
+    #     news_source = None
+    #     if news_source_response:
+    #         title = news_source_response.get("title")
+    #         description = news_source_response.get("description")
+    #         urlToImage = news_source_response.get("urlToImage")
+    #         url = news_source_response.get("url")
+    #         publishedAt = news_source_response.get("publishedAt")
+
+    #         news_object = Sources(
+    #             title, description, url, urlToImage, publishedAt)
+    # return news_object

@@ -1,36 +1,50 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 
-<!-- Styles block -->
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for article in articles  %}
+        <div class="col-md-6">
+            <div class="card" id="card1">
+                <img src=" {{article.url}}" alt="">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h6>{{article.author}}</h6>
+                    </div>
+                    <div class="card-text">
+                        <p>{{article.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="  {{article.urlToImage}}" target="_blank" >
+                            <button class="btn btn-success">view article</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+<!-- <ul>
+  
+    {% for article in articles  %}
+       <li>
+           {{article.title}}
+           <hr>
+           {{article.author}}
+           <hr>
+           {{article.description}}
+           <hr>
+           {{article.url}}
+           <hr>
+           {{article.urlToImage}}
+           <hr>
+           {{article.publishedAt}}
+       </li>
+       {% endfor %}
+     </ul> -->
 {% endblock %}
 
-<!-- Main page -->
-{% block content %}
-<div class="container-fluid">
-  <div id="main">
-    <div class="header">
-      <h1><NEWS-HEADLIGHTS></h1>
-    </div>
-
-   <div class="info">
-    <div class="container">
-      <form class="search-form d-flex p-4">
-        <input type="text" name="search_query" placeholder="Search for an article" class="form-control">
-        <button type="submit" value="Submit" class="btn btn-dark">Search</button>
-      </form>
-  
-    </div>
-   </div>
-
-   <div class="row g-4">
-    <!-- <div class="col-md-3"> -->
-    {{ macro.newsOfTheDay(sources_news) }}
-   
-    <!-- </div> -->
-    </div>
-
-  </div>
-  {% endblock %}

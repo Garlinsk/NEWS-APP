@@ -8,13 +8,13 @@
 {% endblock %}
 
 {% block category %}
-<div class="container-fluid" id="cate-gory">
-
- 
+<div class="container-fluid">
   <div class='row'>
-    <!-- <div class='col'> -->
-    {{ macro.categoryList(news_results) }}
-  </div>
+    <div class='col'>
+    {% for news in news %}
+    
 
   </div>
-  {% endblock %}
+
+</div>
+{% endblock %}
